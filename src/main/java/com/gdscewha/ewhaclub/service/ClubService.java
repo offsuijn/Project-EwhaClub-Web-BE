@@ -45,20 +45,8 @@ public class ClubService {
 
     //동아리 검색
     public List<MainPageClubDto> searchClubs(String keyword){
-        /*List<MainPageClubDto> searchResults = new ArrayList<>();
-        if(keyword.matches(".*[ㄱ-하-ㅣ가-힣]+.*")){
-            searchResults.addAll(clubRepository.findByNameContaining(keyword).stream()
-                    .map(c -> modelMapper.map(c, MainPageClubDto.class))
-                    .collect(Collectors.toList()));
-        }
-        else{
-            searchResults.addAll(clubRepository.findByEngNameIgnoreCaseContaining(keyword).stream()
-                    .map(c -> modelMapper.map(c, MainPageClubDto.class))
-                    .collect(Collectors.toList()));
-        }
-        return searchResults;*/
 
-        return clubRepository.findByNameOrEngName(keyword, keyword).stream()
+        return clubRepository.findByNameContainingOrEngNameContainingIgnoreCase(keyword, keyword).stream()
                 .map(c -> modelMapper.map(c, MainPageClubDto.class))
                 .collect(Collectors.toList());
     }
