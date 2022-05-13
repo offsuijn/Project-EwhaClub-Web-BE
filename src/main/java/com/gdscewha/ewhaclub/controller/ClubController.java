@@ -49,7 +49,7 @@ public class ClubController {
         return clubList;
     }
 
-    @GetMapping(value="/club/{clubId}")
+    @GetMapping(value="/clubs/{clubId}")
     public DetailPageClubDto getDetailPage(@PathVariable("clubId") Long clubId) throws Exception {
         DetailPageClubDto detailPageClubDto = clubService.getDetailPage(clubId);
         return objectMapper.readValue(objectMapper.registerModule(new JavaTimeModule()).writeValueAsString(detailPageClubDto), DetailPageClubDto.class);
