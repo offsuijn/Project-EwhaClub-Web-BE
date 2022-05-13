@@ -40,7 +40,7 @@ public class Club {
     private LocalDateTime recruitEnd;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
-    private boolean isRecruiting;
+    private Boolean isRecruiting;
 
     @Column(nullable = false, length = 255)
     private String recruitRequirement;

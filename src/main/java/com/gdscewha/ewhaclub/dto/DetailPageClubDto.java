@@ -23,7 +23,7 @@ public class DetailPageClubDto {
     private String mainImgUrl;
     private String name;
     private String engName;
-    private Long category;
+    private int category;
     private String shortDescription;
     private String detailDescription;
     private String detailActivity;

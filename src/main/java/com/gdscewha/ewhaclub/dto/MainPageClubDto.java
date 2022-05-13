@@ -1,5 +1,7 @@
 package com.gdscewha.ewhaclub.dto;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.gdscewha.ewhaclub.domain.Club;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +13,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MainPageClubDto {
 
     @NotNull
@@ -19,15 +23,6 @@ public class MainPageClubDto {
     private String name;
     private int category;
     private String shortDescription;
-    private boolean isRecruiting;
+    private Boolean isRecruiting;
 
-    public MainPageClubDto(@NotNull Long id, String mainImgUrl, String name,
-                           int category, String shortDescription, boolean isRecruiting) {
-        this.id = id;
-        this.mainImgUrl = mainImgUrl;
-        this.name = name;
-        this.category = category;
-        this.shortDescription = shortDescription;
-        this.isRecruiting = isRecruiting;
-    }
 }
