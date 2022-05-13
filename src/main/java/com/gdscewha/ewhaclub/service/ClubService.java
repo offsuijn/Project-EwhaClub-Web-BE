@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,8 +26,10 @@ public class ClubService {
     /**
      * 전체 동아리 조회
      */
-    public List<Club> findClubs() {
-        return clubRepository.findAll();
+    public List<MainPageClubDto> findClubs() {
+        return clubRepository.findAll().stream()
+                .map(c -> modelMapper.map(c, MainPageClubDto.class))
+                .collect(Collectors.toList());
     }
 
     //특정 동아리 조회

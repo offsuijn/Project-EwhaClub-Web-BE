@@ -31,22 +31,7 @@ public class ClubController {
 
     @GetMapping("/clubs")
     public List<MainPageClubDto> getClubs() {
-        List<Club> clubs = clubService.findClubs();
-        List<MainPageClubDto> clubList = new ArrayList<>();
-        for (Club club : clubs) {
-            MainPageClubDto dto = MainPageClubDto.builder()
-                    .id(club.getClubId())
-                    .name(club.getName())
-                    .category(club.getCategory())
-                    .shortDescription(club.getShortDescription())
-                    .isRecruiting(club.isRecruiting())
-                    .mainImgUrl(club.getMainImgUrl())
-                    .build();
-
-            clubList.add(dto);
-        }
-
-        return clubList;
+        return clubService.findClubs();
     }
 
     @GetMapping(value="/clubs/{clubId}")
