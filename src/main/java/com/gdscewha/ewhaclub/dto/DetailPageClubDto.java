@@ -27,7 +27,7 @@ public class DetailPageClubDto {
     private String shortDescription;
     private String detailDescription;
     private String detailActivity;
-    private Boolean isRecruiting;
+    private int isRecruiting;
     private LocalDateTime recruitStart;
     private LocalDateTime recruitEnd;
     private String recruitRequirement;

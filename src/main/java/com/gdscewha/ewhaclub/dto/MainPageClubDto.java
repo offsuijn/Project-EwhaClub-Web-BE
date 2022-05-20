@@ -23,6 +23,6 @@ public class MainPageClubDto {
     private String name;
     private int category;
     private String shortDescription;
-    private Boolean isRecruiting;
+    private int isRecruiting;
 
 }

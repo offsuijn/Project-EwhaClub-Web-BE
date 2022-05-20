@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+
 public class Club {
 
     @Id
@@ -39,8 +40,8 @@ public class Club {
     @Column(nullable = false)
     private LocalDateTime recruitEnd;
 
-    @Column(nullable = false, columnDefinition = "TINYINT(1)")
-    private Boolean isRecruiting;
+    @Column(nullable = false)
+    private int isRecruiting;
 
     @Column(nullable = false, length = 255)
     private String recruitRequirement;
@@ -75,7 +76,7 @@ public class Club {
 
     public Club(int category, String name, String engName,
                 String shortDescription, String detailDescription, String detailActivity,
-                LocalDateTime recruitStart, LocalDateTime recruitEnd, boolean isRecruiting,
+                LocalDateTime recruitStart, LocalDateTime recruitEnd, int isRecruiting,
                 String recruitRequirement, String howToApply, Long viewCnt, String mainImgUrl,
                 String posterImgUrl, String instaUrl, String facebookUrl, String youtubeUrl) {
         this.category = category;
