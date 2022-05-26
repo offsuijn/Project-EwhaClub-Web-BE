@@ -8,6 +8,7 @@ import com.gdscewha.ewhaclub.dto.DetailPageClubDto;
 import com.gdscewha.ewhaclub.dto.MainPageClubDto;
 import com.gdscewha.ewhaclub.service.ClubService;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ClubController {
+    @GetMapping("/")
+    public String index() {
+        return "Hello, this is a main page";
+    }
+
+
     @Autowired
     private ClubService clubService;
     private ObjectMapper objectMapper = new ObjectMapper();
