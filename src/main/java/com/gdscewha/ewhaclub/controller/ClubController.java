@@ -47,6 +47,11 @@ public class ClubController {
         return objectMapper.readValue(objectMapper.registerModule(new JavaTimeModule()).writeValueAsString(detailPageClubDto), DetailPageClubDto.class);
     }
 
+    @GetMapping(value="/category/{category}")
+    public List<MainPageClubDto> getCategory(@PathVariable("category") int category) throws Exception {
+        return clubService.getCategory(category);
+    }
+
     @GetMapping(value="/clubs/search")
     public List<MainPageClubDto> searchClubs(@RequestParam("name") String name){
         return clubService.searchClubs(name);

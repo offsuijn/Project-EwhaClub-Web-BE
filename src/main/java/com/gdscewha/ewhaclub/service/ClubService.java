@@ -32,7 +32,9 @@ public class ClubService {
                 .collect(Collectors.toList());
     }
 
-    //특정 동아리 조회
+    /**
+     * 특정 동아리 조회
+     */
     public DetailPageClubDto getDetailPage(Long clubId){
         Optional<Club> clubWrapper = clubRepository.findById(clubId);
         Club club = clubWrapper.get();
@@ -44,12 +46,24 @@ public class ClubService {
         return detailPageClubDto;
     }
 
-    //동아리 검색
+    /**
+     * 동아리 이름으로 검색
+     * - 한글과 영어 이름을 포함할 경우 검색
+     * - 영어 이름은 대소문자 구별하지 않는다.
+     */
     public List<MainPageClubDto> searchClubs(String keyword){
 
         return clubRepository.findByNameContainingOrEngNameContainingIgnoreCase(keyword, keyword).stream()
                 .map(c -> modelMapper.map(c, MainPageClubDto.class))
                 .collect(Collectors.toList());
     }
-    
+
+    /**
+     * 카테고리별 동아리 조회
+     */
+    public List<MainPageClubDto> getCategory(int category) {
+        return clubRepository.findByCategory(category).stream()
+                .map(c -> modelMapper.map(c, MainPageClubDto.class))
+                .collect(Collectors.toList());
+    }
 }

@@ -11,4 +11,6 @@ import java.util.List;
 public interface ClubRepository extends JpaRepository<Club, Long> {
     List<Club> findByNameContainingOrEngNameContainingIgnoreCase(@Param("korKey") String korKey,
                                                                  @Param("engKey")String engKey);
+
+    List<Club> findByCategory(@Param("category") int category);
 }
