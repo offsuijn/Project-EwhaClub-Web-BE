@@ -6,8 +6,10 @@ import org.hibernate.annotations.ColumnDefault;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
-@Setter
 @Entity
 
 public class Club {
@@ -70,8 +72,7 @@ public class Club {
 
     public void updateView(){
         Long view = this.getViewCnt();
-        view++;
-        this.setViewCnt(view);
+        this.viewCnt = ++view;
     }
 
     public Club(int category, String name, String engName,
@@ -96,8 +97,5 @@ public class Club {
         this.instaUrl = instaUrl;
         this.facebookUrl = facebookUrl;
         this.youtubeUrl = youtubeUrl;
-    }
-
-    public Club() {
     }
 }
