@@ -1,6 +1,7 @@
 package com.gdscewha.ewhaclub.controller;
 
 import com.gdscewha.ewhaclub.dto.CheckEmailDto;
+import com.gdscewha.ewhaclub.dto.CheckNameDto;
 import com.gdscewha.ewhaclub.dto.MessageResponseDto;
 import com.gdscewha.ewhaclub.dto.UserDto;
 import com.gdscewha.ewhaclub.service.UserService;
@@ -20,18 +21,18 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/signup")
+    @PostMapping(value="/signup")
     public ResponseEntity<MessageResponseDto> signUp(@Valid @RequestBody UserDto requestDto) {
-        return ResponseEntity.ok(userService.join(requestDto))
+        return ResponseEntity.ok(userService.join(requestDto));
     }
 
-    @PostMapping("/signup/checkName")
+    @PostMapping(value="/signup/checkName")
     public ResponseEntity<MessageResponseDto> checkName(@Valid @RequestBody CheckNameDto requestDto) {
-        return ResponseEntity.ok(UserService.checkDuplicateName(requestDto))
+        return ResponseEntity.ok(userService.checkDuplicateName(requestDto));
     }
 
-    @PostMapping("/signup/checkEmail")
+    @PostMapping(value="/signup/checkEmail")
     public ResponseEntity<MessageResponseDto> checkEmail(@Valid @RequestBody CheckEmailDto requestDto) {
-        return ResponseEntity.ok(UserService.checkDuplicateEmail(requestDto))
+        return ResponseEntity.ok(userService.checkDuplicateEmail(requestDto));
     }
 }

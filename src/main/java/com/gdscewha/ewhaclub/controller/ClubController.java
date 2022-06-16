@@ -36,7 +36,7 @@ public class ClubController {
         this.objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
     }
 
-    @GetMapping("/clubs")
+    @GetMapping(value="/clubs")
     public List<MainPageClubDto> getClubs() {
         return clubService.findClubs();
     }
