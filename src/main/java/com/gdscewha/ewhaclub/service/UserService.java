@@ -1,6 +1,7 @@
 package com.gdscewha.ewhaclub.service;
 
 import com.gdscewha.ewhaclub.domain.User;
+import com.gdscewha.ewhaclub.dto.CheckEmailDto;
 import com.gdscewha.ewhaclub.dto.CheckNameDto;
 import com.gdscewha.ewhaclub.dto.MessageResponseDto;
 import com.gdscewha.ewhaclub.dto.UserDto;
@@ -33,6 +34,9 @@ public class UserService {
         return MessageResponseDto.builder().message("sign-up success").build();
     }
 
+    /**
+     * 닉네임 중복 검사
+     */
     public MessageResponseDto checkDuplicateName(CheckNameDto dto){
         if(userRepository.findByNickName(dto.getCheckName()).size() > 0) {
             return MessageResponseDto.builder().message("already existed nickname").build();
@@ -40,5 +44,13 @@ public class UserService {
         return MessageResponseDto.builder().message("not existed nickname").build();
     }
 
-
+    /**
+     * 이메일 중복 검사
+     */
+    public MessageResponseDto checkDuplicateEmail(CheckEmailDto dto){
+        if(userRepository.findByEmail(dto.getCheckEmail()).size() > 0) {
+            return MessageResponseDto.builder().message("already existed email").build();
+        }
+        return MessageResponseDto.builder().message("not existed email").build();
+    }
 }
