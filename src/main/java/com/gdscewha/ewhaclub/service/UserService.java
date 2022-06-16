@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -38,7 +39,7 @@ public class UserService {
      * 닉네임 중복 검사
      */
     public MessageResponseDto checkDuplicateName(CheckNameDto dto){
-        if(userRepository.findByNickName(dto.getCheckName()).size() > 0) {
+        if(userRepository.findByNickname(dto.getCheckName()).size() > 0) {
             return MessageResponseDto.builder().message("already existed nickname").build();
         }
         return MessageResponseDto.builder().message("not existed nickname").build();
