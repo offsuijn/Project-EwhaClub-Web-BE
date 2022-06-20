@@ -17,17 +17,17 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping(value="/signup")
-    public ResponseEntity<MessageResponseDto> signUp(@Valid @RequestBody UserDto requestDto) {
+    public ResponseEntity<?> signUp(@Valid @RequestBody UserDto requestDto) {
         return ResponseEntity.ok(userService.join(requestDto));
     }
 
     @PostMapping(value="/signup/checkName")
-    public ResponseEntity<MessageResponseDto> checkName(@Valid @RequestBody CheckNameDto requestDto) {
+    public ResponseEntity<?> checkName(@Valid @RequestBody CheckNameDto requestDto) {
         return ResponseEntity.ok(userService.checkDuplicateName(requestDto));
     }
 
     @PostMapping(value="/signup/checkEmail")
-    public ResponseEntity<MessageResponseDto> checkEmail(@Valid @RequestBody CheckEmailDto requestDto) {
+    public ResponseEntity<?> checkEmail(@Valid @RequestBody CheckEmailDto requestDto) {
         return ResponseEntity.ok(userService.checkDuplicateEmail(requestDto));
     }
 
