@@ -1,9 +1,6 @@
 package com.gdscewha.ewhaclub.controller;
 
-import com.gdscewha.ewhaclub.dto.CheckEmailDto;
-import com.gdscewha.ewhaclub.dto.CheckNameDto;
-import com.gdscewha.ewhaclub.dto.MessageResponseDto;
-import com.gdscewha.ewhaclub.dto.UserDto;
+import com.gdscewha.ewhaclub.dto.*;
 import com.gdscewha.ewhaclub.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +31,10 @@ public class UserController {
     @PostMapping(value="/signup/checkEmail")
     public ResponseEntity<MessageResponseDto> checkEmail(@Valid @RequestBody CheckEmailDto requestDto) {
         return ResponseEntity.ok(userService.checkDuplicateEmail(requestDto));
+    }
+
+    @PostMapping(value="/signin")
+    public ResponseEntity<MessageResponseDto> login(@Valid @RequestBody LoginInfoDto requestDto){
+        return ResponseEntity.ok(userService.login(requestDto));
     }
 }
