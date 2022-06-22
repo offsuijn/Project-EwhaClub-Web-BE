@@ -74,6 +74,7 @@ public class JwtTokenProvider {
     }
 
     public String getUserEmail(String jwtToken) {
+        jwtToken = jwtToken.substring(7);
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken).getBody().getSubject();
     }
 
