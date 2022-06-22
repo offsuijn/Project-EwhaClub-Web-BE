@@ -56,18 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                    .authorizeRequests().antMatchers("/like**").authenticated()
+                    .authorizeRequests().antMatchers("/like/**").authenticated()
                     .anyRequest().permitAll()
-                    //.authorizeRequests().antMatchers("/users/**").permitAll()
-                    //.anyRequest().hasRole("USER")
                 .and()
                     .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .cors().configurationSource(corsConfigurationSource());
-
-//        http.authorizeRequests()
-//                .antMatchers("/users").permitAll()
-//                .and().addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
-//                //.anyRequest().permitAll();
+                .cors().configurationSource(corsConfigurationSource());;
     }
 
     @Bean
