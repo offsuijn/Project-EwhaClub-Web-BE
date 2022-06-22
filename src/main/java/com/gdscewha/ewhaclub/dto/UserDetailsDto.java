@@ -63,7 +63,6 @@ public class UserDetailsDto implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        //이메일이 인증되어 있고 계정이 잠겨있지 않으면 true
         return true;
     }
 }
