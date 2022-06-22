@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import com.gdscewha.ewhaclub.domain.User;
 import com.gdscewha.ewhaclub.dto.*;
+import com.gdscewha.ewhaclub.exception.CustomException;
+import com.gdscewha.ewhaclub.exception.ErrorCode;
 import com.gdscewha.ewhaclub.repository.UserRepository;
 import com.gdscewha.ewhaclub.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -79,6 +81,7 @@ public class UserService {
         else {
             return userDto.get(0);
         }
+
     }
 
     public MessageResponseDto login(LoginInfoDto loginInfoDto){
