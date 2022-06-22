@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
+@Table(name = "likes")
 public class Like {
 
     @Id
@@ -22,7 +23,4 @@ public class Like {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "club_id", nullable = false)
     private Club club;
-
-    @Column(nullable = false)
-    private Boolean deletedFlag;
 }

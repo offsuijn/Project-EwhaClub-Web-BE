@@ -30,4 +30,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String nickname;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Like> likes = new ArrayList<>();
+
 }

@@ -3,10 +3,12 @@ package com.gdscewha.ewhaclub.dto;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.gdscewha.ewhaclub.domain.Club;
+import com.gdscewha.ewhaclub.exception.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.ResponseEntity;
 
 import javax.validation.constraints.NotNull;
 
@@ -24,5 +26,16 @@ public class MainPageClubDto {
     private int category;
     private String shortDescription;
     private int isRecruiting;
+
+    public static MainPageClubDto toMainPageClubDto(Club club){
+        return MainPageClubDto.builder()
+                .id(club.getClubId())
+                .mainImgUrl(club.getMainImgUrl())
+                .name(club.getName())
+                .category(club.getCategory())
+                .shortDescription(club.getShortDescription())
+                .isRecruiting(club.getIsRecruiting())
+                .build();
+    }
 
 }
