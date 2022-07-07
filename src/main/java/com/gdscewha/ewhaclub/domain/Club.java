@@ -5,6 +5,8 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -69,6 +71,14 @@ public class Club {
 
     @Column(columnDefinition = "TEXT")
     private String youtubeUrl;
+
+    @Column(nullable = false)
+    @ColumnDefault("0")
+    private int isLike;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+    private List<Like> likes = new ArrayList<>();
 
     public void updateView(){
         Long view = this.getViewCnt();

@@ -26,6 +26,7 @@ public class MainPageClubDto {
     private int category;
     private String shortDescription;
     private int isRecruiting;
+    private int isLike;
 
     public static MainPageClubDto toMainPageClubDto(Club club){
         return MainPageClubDto.builder()
@@ -35,6 +36,7 @@ public class MainPageClubDto {
                 .category(club.getCategory())
                 .shortDescription(club.getShortDescription())
                 .isRecruiting(club.getIsRecruiting())
+                .isLike(club.getIsLike())
                 .build();
     }
 
